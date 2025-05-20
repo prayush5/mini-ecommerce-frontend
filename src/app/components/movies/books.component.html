@@ -1,0 +1,15 @@
+<!-- books.component.html -->
+<div class="container">
+  <h2 class="header">Available Books</h2>
+  <div class="book-grid">
+    <div *ngFor="let book of books" class="book-card">
+      <img [src]="book.imageUrl" alt="{{ book.bookTitle }}" class="book-image" />
+      <p class="text-center"><strong>{{ book.bookTitle }}</strong> by {{ book.bookAuthor }}</p>
+      <p class="text-center">Genre: {{ book.bookGenre }}</p>
+      <p class="text-center">Price: $ {{ book.priceDTO }}</p>
+      <p class="text-center">Availability: {{ book.quantity }}</p>
+      <input type="number" [value]="book.quantityToAdd ?? 1" (input)="updateQuantity(book, $event)" min="1" [max]="book.quantity" placeholder="Qty" />
+      <button class="add-to-cart" (click)="addToCart(book)">Add to Cart</button>
+    </div>
+  </div>
+</div>

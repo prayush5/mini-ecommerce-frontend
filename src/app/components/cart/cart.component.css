@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  padding: 1rem;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-footer {
+  background-color: #f5f5f5; 
+  font-weight: bold;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-footer > tr > td {
+  padding: 0.5rem;
+  border-top: 2px solid #ddd; 
+}
+
+:host ::ng-deep .p-datatable .p-datatable-footer > tr > td:last-child {
+  text-align: right; 
+}

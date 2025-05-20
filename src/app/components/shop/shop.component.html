@@ -1,0 +1,22 @@
+<div class="p-5 min-h-screen bg-gradient-to-br from-gray-100 to-blue-50">
+    <div class="flex justify-content-between align-items-center mb-6 border-b border-gray-200 pb-4 animate__animated animate__fadeIn">
+      <h2 class="text-4xl font-extrabold text-gray-900 flex align-items-center gap-3">
+        <i class="pi pi-shopping-cart text-blue-700 text-4xl animate__animated animate__pulse animate__infinite"></i>
+        {{ category | titlecase }} Shop
+      </h2>
+      <p-button label="Back to Home" icon="pi pi-home" styleClass="p-button-outlined p-button-primary hover:scale-105 transition-transform" (onClick)="goToHome()"></p-button>
+    </div>
+  
+    <!-- <p-card class="shadow-4 border-round-lg animate__animated animate__fadeInUp">
+      <ng-template pTemplate="header">
+        <div class="flex align-items-center gap-3 text-xl font-semibold p-4 bg-gradient-to-r from-blue-600 to-blue-400 text-white border-round-top">
+          <i class="pi {{ category === 'books' ? 'pi-book' : 'pi-heart' }} text-2xl"></i>
+          {{ category | titlecase }} Catalog
+        </div>
+      </ng-template>
+      <ng-template pTemplate="contentFusion">
+      </ng-template>
+    </p-card> -->
+    <router-outlet></router-outlet>
+  </div>
+  

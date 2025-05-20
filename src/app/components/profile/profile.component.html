@@ -1,0 +1,16 @@
+<h2>Welcome {{ user?.username }}</h2>
+
+<h3>Purchased Books</h3>
+<ul>
+  <li *ngFor="let book of user?.purchasedBook">
+    {{ book.bookTitle }} - {{ book.quantity }} x ${{ book.priceDTO }}
+  </li>
+</ul>
+
+<h3>Purchased Medicines</h3>
+<ul>
+  <li *ngFor="let med of user?.purchasedMedicine">
+    {{ med.medicineName }} - {{ med.quantity }} x ${{ med.price }}
+  </li>
+</ul>
+

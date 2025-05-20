@@ -1,0 +1,49 @@
+<div class="p-4">
+  <h2>Your Shopping Cart</h2>
+  <div style="text-align: right;">
+    <p-button
+      label="Home"
+      icon="pi pi-home"
+      (onClick)="goToHome()"
+      [style]="{ 'background-color': '#4caf50', 'color': '#fff' }"
+    ></p-button>
+  </div>
+
+  <p-table [value]="cartItems" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Item Type</th>
+        <th>Item Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Subtotal</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-item>
+      <tr>
+        <td>{{ item.bookTitle ? 'Book' : 'Medicine' }}</td>
+        <td>{{ item.bookTitle || item.medicineName }}</td>
+        <td>{{ item.quantityDTO }}</td>
+        <td>{{ item.priceDTO | currency:'USD' }}</td>
+        <td>{{ (item.priceDTO || 0) * (item.quantityDTO || 0) | currency:'USD' }}</td>
+        <td>
+          <p-button class="remove-button" (click)="logAndRemove(item)">Remove</p-button>
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="6">No items in your cart.</td>
+      </tr>
+    </ng-template>
+
+   <ng-template pTemplate="summary">
+ <div class="text-right">
+   <strong>Total: {{ totalPrice | currency:'USD' }}</strong>
+ </div>
+</ng-template>
+</p-table>
+</div>

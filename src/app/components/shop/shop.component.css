@@ -1,0 +1,11 @@
+:host {
+    display: block;
+  }
+  
+  .p-card {
+    transition: all 0.3s ease;
+  }
+  
+  .p-button {
+    transition: transform 0.2s ease;
+  }

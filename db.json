@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": "2b3e",
+      "fullName": "Ram",
+      "email": "ram@gmail.com",
+      "password": "ram@123"
+    },
+    {
+      "id": "d708",
+      "fullName": "Test User",
+      "email": "test@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": "aa1b",
+      "fullName": "Prayush Shrestha",
+      "email": "prayushestha5@gmail.com",
+      "password": "prayush@7797"
+    },
+    {
+      "id": "79ae",
+      "fullName": "Prayush Shrestha",
+      "email": "prayush@gmail.com",
+      "password": "prayush7797"
+    },
+    {
+      "id": "56a3",
+      "fullName": "Sita",
+      "email": "sita@gmail.com",
+      "password": "sita"
+    }
+  ]
+}
