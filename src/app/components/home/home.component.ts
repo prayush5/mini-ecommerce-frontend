@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { CommonModule } from '@angular/common';
@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ButtonModule, CardModule, CommonModule, RouterLink],
+  imports: [ButtonModule, CardModule, CommonModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

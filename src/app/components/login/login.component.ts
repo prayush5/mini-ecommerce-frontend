@@ -8,7 +8,7 @@ import { PasswordModule } from 'primeng/password';
 import { AuthService } from '../../services/auth.service';
 import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
-import { Login } from '../../interfaces/auth'; // Import the interface
+import { Login } from '../../interfaces/auth'; 
 
 @Component({
   selector: 'app-login',
