@@ -20,6 +20,7 @@ A simple full-stack e-commerce application built with Angular (frontend) and Jav
 - Spring JPA/Hibernate
 - Maven
 - Apache POI
+- Postman (API testing)
 
 ---
 
