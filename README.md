@@ -38,6 +38,9 @@ A simple full-stack e-commerce application built with Angular (frontend) and Jav
 ### Books
 ![Image](https://github.com/user-attachments/assets/d6eca492-4846-4297-bf7b-c97bf42b7923)
 
+### Medicines
+![Image](https://github.com/user-attachments/assets/402024f6-b070-4561-b00c-8c78dd2cd24e)
+
 ### Adding Items to Cart
 ![Image](https://github.com/user-attachments/assets/cf6c7ebc-88f0-47f5-a620-2d1c76cf42c9)
 
