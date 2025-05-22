@@ -1,27 +1,48 @@
-# AngularProject
+# 🛒 Mini E-Commerce App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.19.
+A simple full-stack e-commerce application built with Angular (frontend) and Java with Spring Boot (backend). It supports user authentication, product browsing, and order placement.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🧩 Tech Stack
 
-## Code scaffolding
+### Frontend:
+- Angular
+- Signals (for state management)
+- CSS
+- HTML
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Backend:
+- Java
+- Spring Boot
+- Spring Security
+- My SQL
+- Spring JPA/Hibernate
+- Maven
+- Apache POI
+- Postman (API testing)
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 📸 Screenshots
 
-## Running unit tests
+### Register
+![Image](https://github.com/user-attachments/assets/23662fe6-5ae4-43d6-911d-2422f164961a)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Login
+![Image](https://github.com/user-attachments/assets/02658bf2-5bb3-4133-89a5-0f8bab4cf629)
 
-## Running end-to-end tests
+### Home Page
+![Image](https://github.com/user-attachments/assets/b16aa64b-4151-45ee-9e5d-dcd9c4dd0407)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Books
+![Image](https://github.com/user-attachments/assets/d6eca492-4846-4297-bf7b-c97bf42b7923)
 
-## Further help
+### Adding Items to Cart
+![Image](https://github.com/user-attachments/assets/cf6c7ebc-88f0-47f5-a620-2d1c76cf42c9)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Cart
+![Image](https://github.com/user-attachments/assets/b468120c-0a6b-4a1d-b211-af8da653d8f6)
+
+### Removing Item From Cart
+![Image](https://github.com/user-attachments/assets/4d165738-4d09-4688-8efe-891ee3e408a5)
