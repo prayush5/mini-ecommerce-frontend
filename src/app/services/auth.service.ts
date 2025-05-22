@@ -11,6 +11,7 @@ export class AuthService {
   private baseUrl = 'http://localhost:8080/api/user'; 
   private cartUrl = "http://localhost:8080/api/cart";
   private bookUrl = 'http://localhost:8080/api/book';
+  private medicineUrl = 'http://localhost:8080/api/medicines';
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<User> {
@@ -39,7 +40,7 @@ export class AuthService {
   }
 
   getAllMedicines(): Observable<MedicineApiResponse[]> {
-    return this.http.get<MedicineApiResponse[]>(`${this.baseUrl}/medicine`); 
+    return this.http.get<MedicineApiResponse[]>(this.medicineUrl); 
   }
 
   addToCart(userId: number, cartItem: CartItemDTO): Observable<{ message: string }> {

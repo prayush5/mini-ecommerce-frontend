@@ -1,13 +1,13 @@
 <!-- medicines.component.html -->
 <div class="container">
   <h2 class="header">Available Medicines</h2>
-  <div class="book-grid">
-    <div *ngFor="let medicine of medicines" class="book-card">
-      <img [src]="medicine.imageUrl" alt="{{ medicine.medicineName }}" class="book-image" />
-      <p class="text-center"><strong>{{ medicine.medicineName }}</strong> by {{ medicine.manufacturer }}</p>
+  <div class="medicine-grid">
+    <div *ngFor="let medicine of medicines" class="medicine-card">
+      <img [src]="medicine.imageUrl" alt="{{ medicine.name1 }}" class="medicine-image" />
+      <p class="text-center"><strong>{{ medicine.name1 }}</strong> by {{ medicine.manufacturer }}</p>
       <p class="text-center">Price: $ {{ medicine.price }}</p>
-      <p class="text-center">Availability: {{ medicine.quantity }}</p>
-      <input type="number" [value]="medicine.quantityToAdd ?? 1" (input)="updateQuantity(medicine, $event)" min="1" [max]="medicine.quantity" placeholder="Qty" />
+      <p class="text-center">Availability: {{ medicine.stockQuantity1 }}</p>
+      <input type="number" [value]="medicine.quantityToAdd ?? 1" (input)="updateQuantity(medicine, $event)" min="1" [max]="medicine.stockQuantity1" placeholder="Qty" />
       <button class="add-to-cart" (click)="addToCart(medicine)">Add to Cart</button>
     </div>
   </div>

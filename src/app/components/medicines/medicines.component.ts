@@ -17,6 +17,7 @@ import { ToastModule } from 'primeng/toast';
 export class MedicinesComponent implements OnInit {
   medicines: PurchasedMedicineDTO[] = [];
   userId!: number;
+  quantities: { [key: string]: number | null } = {};
 
   constructor(
     private authService: AuthService,
@@ -24,26 +25,49 @@ export class MedicinesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const storedUserId = sessionStorage.getItem('userId');
-    if (storedUserId) {
-      this.userId = parseInt(storedUserId, 10);
-    } else {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'User not logged in.' });
-    }
-
-    this.authService.getAllMedicines().subscribe({
-      next: (data: MedicineApiResponse[]) => {
-        this.medicines = data.map(medicine => ({
-          medicineName: medicine.medicineName,
-          manufacturer: medicine.manufacturer,
-          price: medicine.price,
-          quantity: medicine.availability,
-          imageUrl: `/assets/images/${medicine.medicineName?.toLowerCase().replace(/ /g, '-')}.jpg` || 'https://example.com/default-medicine.jpg'
-        }));
-      },
-      error: err => console.error('Error fetching medicines:', err)
-    });
+  const storedUserId = sessionStorage.getItem('userId');
+  if (storedUserId) {
+    this.userId = parseInt(storedUserId, 10);
+  } else {
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'User not logged in.' });
   }
+
+  this.authService.getAllMedicines().subscribe({
+    next: (data: MedicineApiResponse[]) => {
+      this.medicines = data.map(medicine => ({
+        name1: medicine.name,
+        stockQuantity1: medicine.stockQuantity,
+        price: medicine.price,
+        manufacturer: medicine.manufacturer,
+        imageUrl: this.getImageUrl(medicine.name), 
+      }));
+      console.log('Mapped medicines:', this.medicines);
+    },
+    error: err => {
+      console.error("Error fetching medicines: ", err);
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to load medicines.' });
+    }
+  });
+}
+
+private getImageUrl(medicineName: string): string {
+  switch (medicineName) {
+    case 'Cetamol':
+      return 'assets/images/cetamol.jpg';
+    case 'Ibuprofen':
+      return 'assets/images/ibu.jpg';
+    case 'Amoxicillin':
+      return 'assets/images/amox.jpg';
+    case 'Cetirizine':
+      return 'assets/images/cet.jpg';
+    case 'Azithromycin':
+      return 'assets/images/azi.jpg';
+    case 'Metformin':
+      return 'assets/images/met.jpg';
+    default:
+      return 'https://via.placeholder.com/150';
+  }
+}
 
   updateQuantity(medicine: PurchasedMedicineDTO, event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -51,28 +75,29 @@ export class MedicinesComponent implements OnInit {
     medicine.quantityToAdd = value;
   }
 
-  addToCart(medicine: PurchasedMedicineDTO): void {
+  addToCart(medicines: PurchasedMedicineDTO): void {
     if (!this.userId) {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please log in to add items to your cart.' });
       return;
     }
 
-    const quantity = medicine.quantityToAdd !== undefined ? medicine.quantityToAdd : 1;
-    if (quantity > (medicine.quantity || 0)) {
+    const quantity = medicines.quantityToAdd !== undefined ? medicines.quantityToAdd : 1;
+    if (quantity > (medicines.stockQuantity1 || 0)) {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Quantity exceeds available stock.' });
       return;
     }
 
     const cartItem: CartItemDTO = {
       bookTitle: null,
-      medicineName: medicine.medicineName,
+      medicineName: medicines.name1,
       quantityDTO: quantity
     };
 
     this.authService.addToCart(this.userId, cartItem).subscribe({
       next: (response) => {
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: `${medicine.medicineName} ${response.message}` });
-        medicine.quantityToAdd = undefined;
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: `${medicines.name1} ${response.message}` });
+        medicines.stockQuantity1=(medicines.stockQuantity1 || 0) - quantity;
+        medicines.quantityToAdd = undefined;
       },
       error: (err) => {
         console.error('Error adding to cart:', err);

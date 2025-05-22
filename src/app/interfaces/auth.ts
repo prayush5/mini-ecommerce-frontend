@@ -27,6 +27,7 @@ export interface ReviewDTO {
   rating?: number;
 }
 
+//matches book dto
 export interface PurchasedBookDTO {
   bookTitle?: string;
   bookAuthor?: string;
@@ -37,17 +38,17 @@ export interface PurchasedBookDTO {
   quantityToAdd?: number;
 }
 
+//matches medicine entity
 export interface PurchasedMedicineDTO {
-  medicineName?: string;
-  quantity?: number;
+  name1?: string;
+  stockQuantity1?: number;
   price?: number;
   manufacturer?: string;
-  manufactureDate?: string;
-  expiryDate?: string;
   imageUrl?: string;
   quantityToAdd?: number;
 }
 
+//matches book entity
 export interface BookApiResponse {
   bookId?: number;
   title?: string;
@@ -60,12 +61,14 @@ export interface BookApiResponse {
   seller?: any;
 }
 
-export interface MedicineApiResponse { 
-  medicineId?: number;
-  medicineName?: string;
-  manufacturer?: string;
-  price?: number;
-  availability?: number;
+//matches medicine dto
+export interface MedicineApiResponse {
+  name: string; 
+  manufacturer: string;
+  price: number;
+  stockQuantity: number; 
+  manufactureDate?: string; 
+  expiryDate?: string; 
   user?: any;
   seller?: any;
 }
