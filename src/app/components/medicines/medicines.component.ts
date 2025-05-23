@@ -25,7 +25,7 @@ export class MedicinesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-  const storedUserId = sessionStorage.getItem('userId');
+  const storedUserId = localStorage.getItem('userId');
   if (storedUserId) {
     this.userId = parseInt(storedUserId, 10);
   } else {

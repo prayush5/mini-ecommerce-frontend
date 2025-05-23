@@ -13,11 +13,11 @@ import { AgentHomeComponent } from './agent-home/agent-home.component';
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'home', component: HomeComponent, canActivate: [authGuard] },
+  { path: 'home', component: HomeComponent },
   {
     path: 'shop',
     component: ShopComponent,
-    canActivate: [authGuard],
+    // canActivate: [authGuard],
     children: [
       { path: 'books', component: BooksComponent },
       { path: 'medicine', component: MedicinesComponent }

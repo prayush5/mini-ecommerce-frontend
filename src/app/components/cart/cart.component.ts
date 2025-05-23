@@ -26,7 +26,7 @@ goToHome() {
   private messageService = inject(MessageService);
 
   ngOnInit(): void {
-    const storedUserId = sessionStorage.getItem('userId');
+    const storedUserId = localStorage.getItem('userId');
     console.log('Stored userId:', storedUserId);
     if (storedUserId) {
       this.userId = parseInt(storedUserId, 10);
