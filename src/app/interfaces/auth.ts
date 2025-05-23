@@ -30,13 +30,14 @@ export interface ReviewDTO {
 
 //matches book dto
 export interface PurchasedBookDTO {
-  bookTitle?: string;
+  bookTitle: string;
   bookAuthor?: string;
   bookGenre?: string;
   quantity?: number;
   priceDTO?: number;
   imageUrl?: string;
   quantityToAdd?: number;
+  bookId?: number;
 }
 
 //matches medicine entity
@@ -53,7 +54,7 @@ export interface PurchasedMedicineDTO {
 //matches book entity
 export interface BookApiResponse {
   bookId?: number;
-  title?: string;
+  title: string;
   author?: string;
   genre?: string;
   price?: number;

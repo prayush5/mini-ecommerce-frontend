@@ -36,8 +36,9 @@ export class AuthService {
   }
 
   getAllBooks(): Observable<BookApiResponse[]> {
-    return this.http.get<BookApiResponse[]>(this.bookUrl);
-  }
+  return this.http.get<BookApiResponse[]>(this.bookUrl);
+}
+
 
   getAllMedicines(): Observable<MedicineApiResponse[]> {
     return this.http.get<MedicineApiResponse[]>(this.medicineUrl); 
@@ -52,10 +53,10 @@ export class AuthService {
   }
 
   addBook(book: any): Observable<any> {
-  return this.http.post('/api/book/add', book);
+  return this.http.post(`${this.bookUrl}/add`, book);
   }
 
-  deleteBook(title: string): Observable<any> {
-  return this.http.delete(`/api/book/delete/${title}`);
+  deleteBook(bookId: number): Observable<any> {
+  return this.http.delete(`${this.bookUrl}/delete/${bookId}`);
   }
 }

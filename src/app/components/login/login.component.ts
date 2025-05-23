@@ -34,10 +34,10 @@ export class LoginComponent {
     this.authService.login(email, password).subscribe({
       next: (response: User) => {
         console.log('Login response:', response);
-        sessionStorage.setItem('email', email);
-        sessionStorage.setItem('userId', response.id.toString());
-        sessionStorage.setItem('role', response.role); 
-        sessionStorage.setItem('username', response.username);
+        localStorage.setItem('email', email);
+        localStorage.setItem('userId', response.id.toString());
+        localStorage.setItem('role', response.role); 
+        localStorage.setItem('username', response.username);
 
         this.messageService.add({
           severity: 'success',
