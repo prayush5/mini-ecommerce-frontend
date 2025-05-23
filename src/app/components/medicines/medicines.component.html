@@ -1,10 +1,11 @@
-<!-- medicines.component.html -->
 <div class="container">
   <h2 class="header">Available Medicines</h2>
   <div class="medicine-grid">
     <div *ngFor="let medicine of medicines" class="medicine-card">
       <img [src]="medicine.imageUrl" alt="{{ medicine.name1 }}" class="medicine-image" />
-      <p class="text-center"><strong>{{ medicine.name1 }}</strong> by {{ medicine.manufacturer }}</p>
+      <p class="text-center"><strong>{{ medicine.name1 }}</strong>
+      <p class="text-center">Manufacturer: {{ medicine.manufacturer }}</p>
+      <p class="text-center">Expiry Date: {{ medicine.expiryDate }}</p>
       <p class="text-center">Price: $ {{ medicine.price }}</p>
       <p class="text-center">Availability: {{ medicine.stockQuantity1 }}</p>
       <input type="number" [value]="medicine.quantityToAdd ?? 1" (input)="updateQuantity(medicine, $event)" min="1" [max]="medicine.stockQuantity1" placeholder="Qty" />

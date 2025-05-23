@@ -39,6 +39,7 @@ export class MedicinesComponent implements OnInit {
         stockQuantity1: medicine.stockQuantity,
         price: medicine.price,
         manufacturer: medicine.manufacturer,
+        expiryDate: medicine.expiryDate,
         imageUrl: this.getImageUrl(medicine.name), 
       }));
       console.log('Mapped medicines:', this.medicines);

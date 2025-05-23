@@ -19,6 +19,7 @@ export interface User {
   purchasedBook?: PurchasedBookDTO[];
   purchasedMedicine?: PurchasedMedicineDTO[];
   cartItem?: CartItemDTO[];
+  role: string;
 }
 
 export interface ReviewDTO {
@@ -46,6 +47,7 @@ export interface PurchasedMedicineDTO {
   manufacturer?: string;
   imageUrl?: string;
   quantityToAdd?: number;
+  expiryDate?: Date;
 }
 
 //matches book entity
@@ -68,7 +70,7 @@ export interface MedicineApiResponse {
   price: number;
   stockQuantity: number; 
   manufactureDate?: string; 
-  expiryDate?: string; 
+  expiryDate?: Date; 
   user?: any;
   seller?: any;
 }

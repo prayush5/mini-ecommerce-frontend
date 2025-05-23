@@ -108,5 +108,7 @@ updateQuantity(book: PurchasedBookDTO, event: Event): void {
   const input = event.target as HTMLInputElement;
   const value = input.value ? parseInt(input.value, 10) : undefined;
   book.quantityToAdd = value;
+
+  
 }
 }

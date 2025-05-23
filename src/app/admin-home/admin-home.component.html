@@ -1,0 +1,22 @@
+<div class="header">
+  <div class="logo">
+    <img [src]="heroBannerUrl" alt="Hero Banner" class="hero-image" (error)="onImageError($event)" />
+  </div>
+  <div class="actions">
+    <p-button label="Log out" icon="pi pi-sign-out" (onClick)="logout()" styleClass="p-button-danger"></p-button>
+  </div>
+</div>
+
+<div class="content">
+  <h1>Welcome {{username}}</h1>
+  <div class="categories">
+    <p-card header="Books" subheader="Explore various genres of books." [style]="{ width: '25rem' }">
+      <img [src]="bookImageUrl" alt="Books" class="category-image" (error)="onImageError($event)" />
+      <p-button label="Browse Books" (onClick)="goToCategory('books')" styleClass="p-button-primary"></p-button>
+    </p-card>
+    <p-card header="Medicine" subheader="Browse your required medicines." [style]="{ width: '25rem' }">
+      <img [src]="medicineImageUrl" alt="Medicine" class="category-image" (error)="onImageError($event)" />
+      <p-button label="Browse Medicine" (onClick)="goToCategory('medicine')" styleClass="p-button-primary"></p-button>
+    </p-card>
+  </div>
+</div>

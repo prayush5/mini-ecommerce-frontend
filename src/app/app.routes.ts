@@ -7,6 +7,8 @@ import { authGuard } from './guards/auth.guard';
 import { CartComponent } from './components/cart/cart.component';
 import { BooksComponent } from './components/movies/books.component';
 import { MedicinesComponent } from './components/medicines/medicines.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AgentHomeComponent } from './agent-home/agent-home.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -23,4 +25,10 @@ export const routes: Routes = [
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'cart', component: CartComponent},
+  { path:'admin-home', component: AdminHomeComponent },
+  { path: 'admin-home/books', component: BooksComponent },        
+  { path: 'admin-home/medicine', component: MedicinesComponent },
+  { path:'agent-home', component: AgentHomeComponent },
+  { path: 'agent-home/books', component: BooksComponent },       
+  { path: 'agent-home/medicine', component: MedicinesComponent },
 ];

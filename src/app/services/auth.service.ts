@@ -50,4 +50,12 @@ export class AuthService {
   removeFromCart(cartItemId: number): Observable<string> {
   return this.http.delete(`${this.cartUrl}/remove/${cartItemId}`, { responseType: 'text'});
   }
+
+  addBook(book: any): Observable<any> {
+  return this.http.post('/api/book/add', book);
+  }
+
+  deleteBook(title: string): Observable<any> {
+  return this.http.delete(`/api/book/delete/${title}`);
+  }
 }
