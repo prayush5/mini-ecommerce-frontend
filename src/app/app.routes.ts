@@ -23,7 +23,7 @@ export const routes: Routes = [
       { path: 'medicine', component: MedicinesComponent }
     ]
   },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'cart', component: CartComponent},
   { path:'admin-home', component: AdminHomeComponent },
   { path: 'admin-home/books', component: BooksComponent },        

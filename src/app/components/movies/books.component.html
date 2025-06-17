@@ -1,30 +1,61 @@
 <div class="container">
-  <h2 class="header">Available Books</h2>
+  <h2 class="mb-3 text-xl font-semibold">Available Books</h2>
 
-  <div *ngIf="isAdmin" class="admin-panel">
-    <h3>Add a Book</h3>
-    <input placeholder="Title" [(ngModel)]="newBook.title" />
-    <input placeholder="Author" [(ngModel)]="newBook.author" />
-    <input placeholder="Genre" [(ngModel)]="newBook.genre" />
-    <input type="number" placeholder="Price" [(ngModel)]="newBook.price" />
-    <input type="number" placeholder="Availability" [(ngModel)]="newBook.availability" />
-    <button (click)="addBook()">Add Book</button>
+  <div *ngIf="isAdmin" class="admin-panel mb-4">
+    <h3 class="text-lg mb-2 font-medium">Add a Book</h3>
+    <div class="p-fluid grid formgrid gap-2">
+      <div class="field col-6 md:col-2">
+        <input pInputText type="text" placeholder="Title" [(ngModel)]="newBook.title" />
+      </div>
+      <div class="field col-6 md:col-2">
+        <input pInputText type="text" placeholder="Author" [(ngModel)]="newBook.author" />
+      </div>
+      <div class="field col-6 md:col-2">
+        <input pInputText type="text" placeholder="Genre" [(ngModel)]="newBook.genre" />
+      </div>
+      <div class="field col-6 md:col-2">
+        <input pInputText type="number" placeholder="Price" [(ngModel)]="newBook.price" />
+      </div>
+      <div class="field col-6 md:col-2">
+        <input pInputText type="number" placeholder="Availability" [(ngModel)]="newBook.availability" />
+      </div>
+      <div class="field col-6 md:col-1 flex align-items-center">
+        <button pButton 
+          type="button" 
+          label="Add" 
+          icon="pi pi-plus"
+          class="pretty-add-btn w-full md:w-auto"
+          (click)="addBook()">
+         </button>
+      </div>
+    </div>
   </div>
 
-  <div class="book-grid">
-    <div *ngFor="let book of books" class="book-card">
-      <img [src]="book.imageUrl" alt="{{ book.bookTitle }}" class="book-image" />
-      <p class="text-center"><strong>{{ book.bookTitle }}</strong> by {{ book.bookAuthor }}</p>
-      <p class="text-center">Genre: {{ book.bookGenre }}</p>
-      <p class="text-center">Price: ${{ book.priceDTO }}</p>
-      <p class="text-center">Availability: {{ book.quantity }}</p>
+  <div class="grid">
+    <div *ngFor="let book of books" class="col-12 sm:col-6 md:col-4 lg:col-3">
+      <div class="card-wrapper p-shadow-2">
+        <img [src]="book.imageUrl" alt="{{ book.bookTitle }}" class="card-img" />
+        <div class="card-content">
+          <h4 class="book-title text-base font-semibold text-center text-indigo-700 mb-1">
+            {{ book.bookTitle }}
+          </h4>
+          <p>by</p>
+          <p class="author"> {{ book.bookAuthor }}</p>
+          <p>Genre: {{ book.bookGenre }}</p>
+          <p>Price: ${{ book.priceDTO }}</p>
+          <p>Availability: {{ book.quantity }}</p>
 
-      <div *ngIf="!isAdmin">
-        <input type="number" [value]="book.quantityToAdd ?? 1" (input)="updateQuantity(book, $event)" min="1" [max]="book.quantity" />
-        <button class="add-to-cart" (click)="addToCart(book)">Add to Cart</button>
+          <div *ngIf="!isAdmin" class="actions">
+            <input type="number" [value]="book.quantityToAdd ?? 1" min="1" [max]="book.quantity"
+                   (input)="updateQuantity(book, $event)" class="input-small" />
+            <button pButton type="button" icon="pi pi-shopping-cart" label="Add to Cart" class="p-button-sm p-button-info"></button>
+          </div>
+
+          <button *ngIf="isAdmin" pButton type="button" icon="pi pi-trash" label="Delete"
+                  class="p-button-danger p-button-xs fixed-width-btn"
+                  (click)="deleteBook(book.bookId!)"></button>
+        </div>
       </div>
-
-      <button *ngIf="isAdmin" class="delete-btn" (click)="deleteBook(book.bookId!)">Delete</button>
     </div>
   </div>
 </div>

@@ -37,8 +37,7 @@ export class AuthService {
 
   getAllBooks(): Observable<BookApiResponse[]> {
   return this.http.get<BookApiResponse[]>(this.bookUrl);
-}
-
+  }
 
   getAllMedicines(): Observable<MedicineApiResponse[]> {
     return this.http.get<MedicineApiResponse[]>(this.medicineUrl); 

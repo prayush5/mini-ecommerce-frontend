@@ -5,11 +5,14 @@ import { CommonModule } from '@angular/common';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { FormsModule } from '@angular/forms';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-books',
   standalone: true,
-  imports: [CommonModule, ToastModule, FormsModule],
+  imports: [CommonModule, ToastModule, FormsModule, CardModule, ButtonModule, InputTextModule],
   templateUrl: './books.component.html',
   styleUrl: './books.component.css'
 })
@@ -66,6 +69,8 @@ export class BooksComponent implements OnInit {
       case 'Outliers': return 'assets/images/outliers.jpg';
       case 'Crime and Punishment': return 'assets/images/cap.jpg';
       case 'Think Like a Monk': return 'assets/images/tlam.jpg';
+      case 'Think and Grow Rich': return 'assets/images/tagr.jpg';
+      case 'And Then There Were None': return 'assets/images/attwn.jpg';
       default: return 'https://example.com/default-book.jpg';
     }
   }
