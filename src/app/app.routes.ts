@@ -5,7 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { authGuard } from './guards/auth.guard';
 import { CartComponent } from './components/cart/cart.component';
-import { BooksComponent } from './components/movies/books.component';
+import { BooksComponent } from './components/books/books.component';
 import { MedicinesComponent } from './components/medicines/medicines.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AgentHomeComponent } from './agent-home/agent-home.component';

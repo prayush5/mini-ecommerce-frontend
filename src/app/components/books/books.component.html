@@ -48,7 +48,14 @@
           <div *ngIf="!isAdmin" class="actions">
             <input type="number" [value]="book.quantityToAdd ?? 1" min="1" [max]="book.quantity"
                    (input)="updateQuantity(book, $event)" class="input-small" />
-            <button pButton type="button" icon="pi pi-shopping-cart" label="Add to Cart" class="p-button-sm p-button-info"></button>
+            <button pButton 
+              type="button" 
+              icon="pi pi-shopping-cart" 
+              label="Add to Cart" 
+              class="enhanced-cart-btn p-button-raised"
+              [disabled]="book.quantity === 0"
+              (click)="addToCart(book)">
+            </button>
           </div>
 
           <button *ngIf="isAdmin" pButton type="button" icon="pi pi-trash" label="Delete"
