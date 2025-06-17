@@ -79,3 +79,121 @@
   white-space: nowrap;
   width: auto !important; 
 }
+
+.mb-3.text-xl.font-semibold {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem 2rem;
+  margin: -1rem -1rem 2rem -1rem; 
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+  text-align: center;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  position: relative;
+  overflow: hidden;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.mb-3.text-xl.font-semibold::before {
+  content: '📚';
+  position: absolute;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
+.mb-3.text-xl.font-semibold::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255,255,255,0.05) 10px,
+    rgba(255,255,255,0.05) 20px
+  );
+  pointer-events: none;
+}
+
+.admin-panel {
+  background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.admin-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4F46E5, #7C3AED, #EC4899);
+  border-radius: 16px 16px 0 0;
+}
+
+.admin-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 20px 40px -10px rgba(0, 0, 0, 0.15),
+    0 8px 16px -4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-panel h3 {
+  color: #374151;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 1.5rem !important;
+  text-align: center;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.admin-panel h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #4F46E5, #EC4899);
+  border-radius: 2px;
+}
+
+.admin-panel .p-inputtext {
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.admin-panel .p-inputtext:focus {
+  border-color: #4F46E5;
+  box-shadow: 
+    0 0 0 3px rgba(79, 70, 229, 0.1),
+    0 4px 12px rgba(79, 70, 229, 0.15);
+  transform: translateY(-1px);
+}
+
+.admin-panel .p-inputtext::placeholder {
+  color: #9ca3af;
+  font-weight: 500;
+}

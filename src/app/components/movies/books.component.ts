@@ -71,6 +71,7 @@ export class BooksComponent implements OnInit {
       case 'Think Like a Monk': return 'assets/images/tlam.jpg';
       case 'Think and Grow Rich': return 'assets/images/tagr.jpg';
       case 'And Then There Were None': return 'assets/images/attwn.jpg';
+      case 'Palpasa Cafe' : return 'assets/images/pc.jpg'
       default: return 'https://example.com/default-book.jpg';
     }
   }
