@@ -9,6 +9,8 @@ import { BooksComponent } from './components/books/books.component';
 import { MedicinesComponent } from './components/medicines/medicines.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AgentHomeComponent } from './agent-home/agent-home.component';
+import { SuccessComponent } from './success/success.component';
+import { CancelComponent } from './cancel/cancel.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -31,4 +33,6 @@ export const routes: Routes = [
   { path:'agent-home', component: AgentHomeComponent },
   { path: 'agent-home/books', component: BooksComponent },       
   { path: 'agent-home/medicine', component: MedicinesComponent },
+  { path: 'success', component: SuccessComponent },
+  { path: 'cancel', component: CancelComponent },
 ];

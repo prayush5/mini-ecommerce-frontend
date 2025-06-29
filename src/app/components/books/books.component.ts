@@ -133,7 +133,7 @@ export class BooksComponent implements OnInit {
     this.authService.deleteBook(bookId).subscribe({
       next: () => {
         console.log('Book deleted successfully');
-        this.loadBooks(); // Refresh the list after deletion
+        this.loadBooks(); 
       },
     error: (err) => {
     console.error('Error deleting book:', err?.message || 'Unknown error');

@@ -15,10 +15,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-private router = inject(Router);
-goToHome() {
-  this.router.navigate(['/home'])
-}
+  private router = inject(Router);
+  goToHome() {
+    this.router.navigate(['/home'])
+  }
   cartItems: CartItemDTO[] = [];
   userId!: number;
    
@@ -38,20 +38,23 @@ goToHome() {
   }
 
   loadCartItems(): void {
-    this.authService.getUserCart(this.userId).subscribe({
-      next: (items) => {
-        this.cartItems = items;
-        console.log('Cart items:', this.cartItems);
-        if (this.cartItems.length === 0) {
-          this.messageService.add({ severity: 'info', summary: 'Info', detail: 'Your cart is empty.' });
-        }
-      },
-      error: (err) => {
-        console.error('Error fetching cart items:', err);
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message || 'Failed to load cart items.' });
+  this.authService.cart$.subscribe({
+    next: (items) => {
+      this.cartItems = items;
+      console.log('Cart items:', this.cartItems);
+      if (this.cartItems.length === 0) {
+        this.messageService.add({ severity: 'info', summary: 'Info', detail: 'Your cart is empty.' });
       }
-    });
-  }
+    },
+    error: (err) => {
+      console.error('Error receiving cart items:', err);
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message || 'Failed to load cart items.' });
+    }
+  });
+
+  this.authService.refreshUserCart(this.userId);
+}
+
 
   logAndRemove(item: CartItemDTO): void {
   console.log('Clicked Remove for item:', item);
@@ -67,7 +70,7 @@ removeFromCart(cartItemId: number): void {
   this.authService.removeFromCart(cartItemId).subscribe({
     next: (message) => {
       this.messageService.add({ severity: 'success', summary: 'Success', detail: message });
-      this.cartItems = this.cartItems.filter(item => item.id !== cartItemId);
+      this.authService.refreshUserCart(this.userId); // Refresh after removing
     },
     error: (err) => {
       console.error('Error removing item:', err);
@@ -76,12 +79,21 @@ removeFromCart(cartItemId: number): void {
   });
 }
 
+
 get totalPrice():number{
   return this.cartItems.reduce((total, item)=>{
     const price = item.priceDTO || 0;
     const quantity = item.quantityDTO || 0;
     return total + price * quantity;
   },0);
+}
+
+checkout(): void{
+  if(this.cartItems.length===0){
+    this.messageService.add({severity: 'warn', summary: 'Warning', detail: 'Your cart is empty.'});
+    return;
+  }
+  this.authService.redirectToCheckout(this.cartItems);
 }
 
 }

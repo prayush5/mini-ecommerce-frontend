@@ -46,4 +46,12 @@
  </div>
 </ng-template>
 </p-table>
+<div class="text-right" style="margin-top: 1rem;">
+  <p-button
+    label="Pay Now 💳"
+    icon="pi pi-credit-card"
+    (onClick)="checkout()"
+    [style]="{ 'background-color': '#2196f3', 'color': '#fff' }"
+  ></p-button>
+</div>
 </div>
