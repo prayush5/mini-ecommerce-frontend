@@ -19,28 +19,28 @@ export class SuccessComponent {
 
   private authService = inject(AuthService);
 
- ngOnInit() {
-  const url = new URL(window.location.href);
-  if (url.searchParams.has('session_id')) {
-    window.history.replaceState({}, '', '/success');
-  }
+//  ngOnInit() {
+//   const url = new URL(window.location.href);
+//   if (url.searchParams.has('session_id')) {
+//     window.history.replaceState({}, '', '/success');
+//   }
 
-  const storedUserId = localStorage.getItem('userId');
-  if (storedUserId) {
-    this.authService.clearUserCart(+storedUserId).subscribe({
-      next: res => {
-        console.log('✅ Cart cleared:', res);
-        this.authService.clearLocalCart();
-        this.goToHome();
-      },
-      error: err => {
-        console.error('❌ Failed to clear cart:', err);
-        this.goToHome();
-      }
-    });
-  } else {
-    this.goToHome();
-  }
-}
+//   const storedUserId = localStorage.getItem('userId');
+//   if (storedUserId) {
+//     this.authService.clearUserCart(+storedUserId).subscribe({
+//       next: res => {
+//         console.log('✅ Cart cleared:', res);
+//         this.authService.clearLocalCart();
+//         this.goToHome();
+//       },
+//       error: err => {
+//         console.error('❌ Failed to clear cart:', err);
+//         this.goToHome();
+//       }
+//     });
+//   } else {
+//     this.goToHome();
+//   }
+// }
 
 }

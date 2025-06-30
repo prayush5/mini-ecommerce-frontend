@@ -32,28 +32,30 @@ export class CartComponent implements OnInit {
       this.userId = parseInt(storedUserId, 10);
       console.log('Parsed userId:', this.userId);
       this.loadCartItems();
+
+      this.authService.cart$.subscribe(cartItems => {
+      this.cartItems = cartItems;
+    });
     } else {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'User not logged in. Please log in to view your cart.' });
     }
   }
 
-  loadCartItems(): void {
-  this.authService.cart$.subscribe({
-    next: (items) => {
-      this.cartItems = items;
-      console.log('Cart items:', this.cartItems);
-      if (this.cartItems.length === 0) {
-        this.messageService.add({ severity: 'info', summary: 'Info', detail: 'Your cart is empty.' });
+    loadCartItems(): void {
+    this.authService.getUserCart(this.userId).subscribe({
+      next: (items) => {
+        this.cartItems = items;
+        console.log('Cart items:', this.cartItems);
+        if (this.cartItems.length === 0) {
+          this.messageService.add({ severity: 'info', summary: 'Info', detail: 'Your cart is empty.' });
+        }
+      },
+      error: (err) => {
+        console.error('Error fetching cart items:', err);
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message || 'Failed to load cart items.' });
       }
-    },
-    error: (err) => {
-      console.error('Error receiving cart items:', err);
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message || 'Failed to load cart items.' });
-    }
-  });
-
-  this.authService.refreshUserCart(this.userId);
-}
+    });
+  }
 
 
   logAndRemove(item: CartItemDTO): void {
